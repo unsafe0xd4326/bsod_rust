@@ -1,0 +1,16 @@
+[package]
+name = "bsod"
+version = "0.1.0"
+authors = ["Adamantium <adamantiumhack@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+winapi = { version = "0.3.9", features = ["ntdef","basetsd", "ntstatus"]}
+
+[profile.release]
+lto = true
+opt-level = 'z'
+codegen-units = 1
+panic = 'abort'
